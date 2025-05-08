@@ -36,6 +36,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        /*
         $user = User::create([
             'name' => $request->name,
             'cif' => $request->cif,
@@ -47,6 +48,19 @@ class RegisteredUserController extends Controller
             'major' => $request->major,
             'password' => Hash::make($request->password),
         ]);
+        */
+
+        
+        $user = new User();
+        $user->name = $request->name;
+        $user->cif = $request->cif;
+        $user->email = $request->email;
+        $user->cellphone = $request->cellphone;
+        $user->sex = $request->sex;
+
+        $user->major = $request->major;
+        $user->password = Hash::make($request->password);
+        $user->save();
 
         event(new Registered($user));
 
