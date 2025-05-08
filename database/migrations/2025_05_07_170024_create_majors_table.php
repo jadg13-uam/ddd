@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('code')->unique();
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('faculty_id');
             $table->foreignId('faculty_id')->constrained('faculties')->onDelete('cascade');
             $table->timestamps();
         });

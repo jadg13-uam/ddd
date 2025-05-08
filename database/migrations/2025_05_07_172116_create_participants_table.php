@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('participants', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // Estudiante
+           // Estudiante
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->unsignedBigInteger('schedule_id'); // Curso
+            // Curso
             $table->foreignId('schedule_id')->constrained('schedules')->onDelete('cascade');
             $table->boolean('is_approved')->default(false);
             $table->timestamps();
